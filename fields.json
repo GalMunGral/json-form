@@ -1,0 +1,14 @@
+{
+  "text": {
+    "name": "InputText",
+    "modulePath": "./components/InputText"
+  },
+  "number": {
+    "name": "InputNumber",
+    "modulePath": "./components/InputNumber"
+  },
+  "solid-color": {
+    "name": "WhateverThisShouldBeCalled",
+    "modulePath": "./this/is/a/test/Rect"
+  }
+}

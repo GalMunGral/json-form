@@ -1,0 +1,17 @@
+{
+  "title": "test",
+  "fields": [
+    {
+      "type": "text",
+      "label": "Company & Title"
+    },
+    {
+      "type": "solid-color",
+      "label": "Just a Solid Rectangle"
+    },
+    {
+      "type": "number",
+      "label": "Contact"
+    }
+  ]
+}
