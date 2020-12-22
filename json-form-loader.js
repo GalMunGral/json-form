@@ -1,3 +1,4 @@
+const path = require("path");
 const t = require("@babel/types");
 const { default: generate } = require("@babel/generator");
 
@@ -22,7 +23,10 @@ function setReactDisplayName(local, displayName) {
 
 function importFieldComp(fieldCompMeta) {
   const { name, modulePath } = fieldCompMeta;
-  const importDeclaration = importDefault(name, modulePath);
+  const importDeclaration = importDefault(
+    name,
+    "./" + path.relative(this.importContext, require.resolve(modulePath))
+  );
   const setup = setReactDisplayName(name, name);
   this.imports.push(importDeclaration);
   this.body.push(setup);
@@ -56,26 +60,30 @@ function renderReactField(itemConfig) {
   const reactElement = t.jsxElement(
     t.jsxOpeningElement(t.jsxIdentifier("div"), []),
     t.jsxClosingElement(t.jsxIdentifier("div")),
-    [
-      t.jsxElement(
-        t.jsxOpeningElement(t.jsxIdentifier("label"), []),
-        t.jsxClosingElement(t.jsxIdentifier("label")),
-        [t.jsxText(label)],
-        false
-      ),
+    (label
+      ? [
+          t.jsxElement(
+            t.jsxOpeningElement(t.jsxIdentifier("label"), []),
+            t.jsxClosingElement(t.jsxIdentifier("label")),
+            [t.jsxText(label)],
+            false
+          ),
+        ]
+      : []
+    ).concat(
       t.jsxElement(
         t.jsxOpeningElement(
           t.jsxIdentifier(fieldCompMeta.name),
-          [
-            // TODO: props can also be configured
-          ],
+          Object.entries(itemConfig).map(([key, value]) => {
+            return t.jsxAttribute(t.jsxIdentifier(key), t.stringLiteral(value));
+          }),
           true
         ),
         null,
         [],
         true
-      ),
-    ],
+      )
+    ),
     true
   );
 
@@ -102,9 +110,10 @@ function renderReactForm(formConfig) {
   this.body.push(reactCompDeclaration, exportDeclaration);
 }
 
-module.exports = (src) => {
+module.exports = function (src) {
   const formConfig = JSON.parse(src);
   const program = {
+    importContext: this.context, // directory of the current module
     imports: [importDefault("React", "react")],
     body: [],
   };

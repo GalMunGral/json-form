@@ -1,14 +1,18 @@
 {
   "text": {
     "name": "InputText",
-    "modulePath": "./components/InputText"
+    "modulePath": "./src/components/InputText"
   },
   "number": {
     "name": "InputNumber",
-    "modulePath": "./components/InputNumber"
+    "modulePath": "./src/components/InputNumber"
   },
   "solid-color": {
     "name": "WhateverThisShouldBeCalled",
     "modulePath": "./this/is/a/test/Rect"
+  },
+  "button": {
+    "name": "ButtonFromReactBootstrap",
+    "modulePath": "react-bootstrap/button"
   }
 }

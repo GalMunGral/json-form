@@ -1,0 +1,25 @@
+{
+  "title": "test",
+  "fields": [
+    {
+      "type": "text",
+      "label": "Company & Title",
+      "style": "margin: 100px",
+      "test": "test-value"      
+    },
+    {
+      "type": "solid-color",
+      "label": "Just a Solid Rectangle",
+      "color": "#123456"
+    },
+    {
+      "type": "number",
+      "label": "Contact"
+    },
+    {
+      "type": "button",
+      "variant": "warning",
+      "children": "TEST"
+    }
+  ]
+}
