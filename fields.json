@@ -13,6 +13,10 @@
   },
   "button": {
     "name": "ButtonFromReactBootstrap",
-    "modulePath": "react-bootstrap/button"
+    "modulePath": "react-bootstrap/Button"
+  },
+  "currency": {
+    "name": "Currency",
+    "modulePath": "./src/components/Currency"
   }
 }

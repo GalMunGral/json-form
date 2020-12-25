@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 
-export default (props) => {
+export default ({ label, value, validity, onChange }) => {
   return (
     <div>
-      <p>{JSON.stringify(props)}</p>
-      <input type="text"/>
+      <label>{label}</label>
+      <pre>{JSON.stringify(validity, null, 2)}</pre>
+      <input type="text" value={value} onChange={onChange} />
     </div>
-  )
-}
+  );
+};
