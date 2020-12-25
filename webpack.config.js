@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.form$/,
+        test: /\.form\.js$/,
         use: [
           {
             loader: "babel-loader",
